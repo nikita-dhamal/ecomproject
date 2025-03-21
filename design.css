@@ -1,0 +1,281 @@
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  
+    background-image: url('backg1.jpeg'); /* Image ka path */
+    background-size: cover; /* Puri screen ko cover karega */
+    background-position: center; /* Image center me rahegi */
+    background-repeat: no-repeat; /* Image repeat nahi hogi */
+
+}
+.container{
+  width: 100%;
+  height: 400px;
+  background-image:'url(background.jpg)';
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Header */
+#header {
+  background-image:url('fback.jpeg');
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+#header .logo {
+  height: 120px;
+}
+#navbar {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+  
+}
+/* Navigation Logo Styles */
+.nav-logo {
+  width: 20px;
+  height: 20px;
+  size: 15px;
+  margin-right: 8px;
+}
+#navbar li {
+  margin: 0 20px;
+}
+#navbar a {
+  text-decoration: none;
+  color: rgb(30, 0, 255);
+  font-weight: 500;
+  font-size: 17px;
+  text-align: center;
+}
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+}
+.product img {
+  background-color: darkgoldenrod;
+  max-width: 100%;
+  height: auto;
+}
+#search {
+  padding: 10px;
+  width: 300px;
+  font-size: 14px; 
+  ;
+  
+ 
+}
+.search-bar {
+ 
+  margin: 0 auto;
+  flex-grow: 1;
+  max-width: 400;
+  padding: 10px;
+
+
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* Space distribute karega */
+  background-color: #f8f8f8;
+  
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.welcome-text {
+  flex-grow: 1;  /* Yeh text ko center me rakhega */
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: aqua;
+}
+
+/* Responsive ke liye */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+  }
+
+  .welcome-text {
+      text-align: center;
+      margin: 10px 0;
+  }
+}#header {
+  background-color: #f8f8f8;  /* Background color */
+  padding: 10px 20px;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space distribute karega */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  width: 100px;  /* Adjust size */
+  height: auto;
+}
+
+/* Welcome Text Center */
+#navbar h1 {
+  flex-grow: 1;  /* Center align ka magic */
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Menu Items ke liye */
+#navbar li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #navbar {
+      flex-direction: column;
+  }
+
+  #navbar h1 {
+      text-align: center;
+      margin: 10px 0;
+  }
+}#header {
+  background-color: #f8f8f8;  /* Background color */
+  padding: 10px 20px;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space distribute karega */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  width: 100px;  /* Adjust size */
+  height: auto;
+}
+
+/* Welcome Text Center */
+#navbar h1 {
+  flex-grow: 1;  /* Center align ka magic */
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Menu Items ke liye */
+#navbar li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #navbar {
+      flex-direction: column;
+  }
+
+  #navbar h1 {
+      text-align: center;
+      margin: 10px 0;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 15px 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+.nav-links a:hover {
+  color: #f4a261;
+}
+
+/* Responsive */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      text-align: center;
+  }
+
+  .nav-links li {
+      margin: 15px 0;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="design.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <section id="header">
+      <a href="#"><img src="main logo.jpg" class="logo" alt="logo"></a>
+      <h1>Product Details</h1>
+      <ul id="navbar">
+         <li>
+          <a href="first.html">
+            <img src="home-icon.svg" alt="My Orders Logo" class="nav-logo">
+            Home
+          </a>
+        </li>
+        <a href="my-orders.html">
+          <img src="7480410.png" alt="feedback" class="nav-logo">
+          Track my order
+        </a>
+         <li>
+          <a href="cancel.html">
+            <img src="package-cancelled-icon.svg" alt="cancel request" class="nav-logo">
+            Cancel request
+          </a>
+        </li>
+         <li>
+          <a href="feed.html">
+            <img src="feedback-rating-icon.svg" alt="feedback" class="nav-logo">
+            feedback
+          </a>
+        </li>
+      </ul>
+    </section>
+  </header>
+
+  <main>
+    <!-- Cart Display Section -->
+  <div id="cart-section">
+    <!-- <h2>Shopping Cart</h2> -->
+    <ul id="cart-items"></ul>
+    <p>Subtotal: $<span id="subtotal">9.00</span></p>
+    <p>Discount: $<span id="discount">10.00</span></p>
+    <p>Total: $<span id="total-price">0.00</span></p>
+    <input type="text" id="promo-code" placeholder="Enter promo code">
+    <button onclick="applyDiscount()">Apply Discount</button>
+    <button onclick="checkout()">Buy Now</button>
+  </div>
+
+  </main>
+</body>
+</html>
+
+<script>
+    let cart = [];
+let subtotal = 0;
+let discount = 0;
+
+// Load cart from localStorage (if available)
+function loadCart() {
+  const savedCart = localStorage.getItem('cart');
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+    updateCart();
+  }
+}
+
+// Save cart to localStorage
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Add product to cart
+function addToCart(productName, price) {
+  const product = { name: productName, price: price };
+  cart.push(product);
+  updateCart();
+  saveCart();
+}
+
+// Update cart display
+function updateCart() {
+  const cartItems = document.getElementById('cart-items');
+  if (cartItems) {
+    cartItems.innerHTML = '';
+    subtotal = 0;
+
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+      cartItems.appendChild(li);
+      subtotal += item.price;
+    });
+
+    const subtotalElement = document.getElementById('subtotal');
+    if (subtotalElement) {
+      subtotalElement.textContent = subtotal.toFixed(2);
+    }
+
+    calculateTotal();
+  }
+}
+
+// Apply discount
+function applyDiscount() {
+  const promoCode = document.getElementById('promo-code').value;
+  if (promoCode === 'DISCOUNT10') {
+    discount = subtotal * 0.1; // 10% discount
+  } else {
+    discount = 0;
+  }
+  calculateTotal();
+}
+
+// Calculate total price
+function calculateTotal() {
+  const total = subtotal - discount;
+  const discountElement = document.getElementById('discount');
+  const totalElement = document.getElementById('total-price');
+
+  if (discountElement) {
+    discountElement.textContent = discount.toFixed(2);
+  }
+  if (totalElement) {
+    totalElement.textContent = total.toFixed(2);
+  }
+}
+
+// Filter products
+function filterProducts() {
+  const searchTerm = document.getElementById('search').value.toLowerCase();
+  const products = document.querySelectorAll('.product');
+
+  products.forEach(product => {
+    const productName = product.getAttribute('data-name').toLowerCase();
+    if (productName.includes(searchTerm)) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+
+// Checkout function
+function checkout() {
+  alert('You have saccessfully buy now product!');
+  cart = [];
+  updateCart();
+  saveCart();
+}
+
+// Load cart when the page loads
+window.onload = loadCart;
+
+</script>
